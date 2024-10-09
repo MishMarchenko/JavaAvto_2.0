@@ -5,10 +5,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
 
 public class SearchTest extends BaseTest{
-
-
     SearchPage search = new SearchPage();
-
     @Test
     void shouldBeVisibleResultSearch(){
         search.clickOnHistoryTab();
@@ -24,6 +21,5 @@ public class SearchTest extends BaseTest{
         search.clickUbisoft();
         search.clickUbisoftHistory();
         assertEquals("Історія", search.getTitleOfUbisoftHistory());
-
     }
 }
