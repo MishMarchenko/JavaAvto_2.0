@@ -1,25 +1,40 @@
 import PO.SearchPage;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
 
 public class SearchTest extends BaseTest{
-    SearchPage search = new SearchPage();
     @Test
     void shouldBeVisibleResultSearch(){
-        search.clickOnHistoryTab();
-        search.fillText("Odesa");
-        search.enterSearch();
-        search.clickUbisoftOdesa();
-        assertEquals("Ubisoft Odesa", search.getTitle());
+        new SearchPage()
+                .clickOnHistoryTab()
+                .fillText("Odesa")
+                .enterSearch()
+                .clickUbisoftOdesa();
+//        assertThat(search.getTitle())
+//                .as("The result of test is appeared")
+//                .isEqualTo("Ubisoft Odesa");
+        SoftAssertions softly = new SoftAssertions();
+//        softly.assertThat(search.getTitle())
+//                .as("The result of test is appeared")
+//                .isEqualTo("Ubisoft Odesa11");
+        softly.assertThat(new SearchPage().getTitle())
+                .as("The result of test is appeared")
+                .isEqualTo("Ubisoft Odesa");
+//        softly.assertThat(search.getTitle())
+//                .as("The result of test is appeared")
+//                .isEqualTo("Ubisoft Odesa22");
+        softly.assertAll();
         }
     @Test
     void shouldBeVisibleResultSearchUbisoft(){
-        search.fillText("Ubisoft");
-        search.enterSearch();
-        search.clickUbisoft();
-        search.clickUbisoftHistory();
-        assertEquals("Історія", search.getTitleOfUbisoftHistory());
+        new SearchPage()
+            .fillText("Ubisoft")
+            .enterSearch()
+            .clickUbisoft()
+            .clickUbisoftHistory();
+        assertEquals("Історія", new SearchPage().getTitleOfUbisoftHistory());
     }
 }

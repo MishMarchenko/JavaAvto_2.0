@@ -13,26 +13,32 @@ public class SearchPage extends BaseMethod {
     private final By ubisoftHistory = By.xpath("//span[@class='toctext']");
     private final By ubisoftHistoryTitle = By.xpath("//h2[@id='Історія']");
 
-    public void clickOnHistoryTab(){
+    public SearchPage clickOnHistoryTab(){
         click(history);
+        return this;
     }
-    public void fillText(String text){
+    public SearchPage fillText(String text){
         send(search, text);
+        return this;
     }
-    public void enterSearch(){
+    public SearchPage enterSearch(){
         clickEnter(search);
+        return this;
     }
-    public void clickUbisoftOdesa(){
+    public SearchPage clickUbisoftOdesa(){
         click(ubisoftOdesa);
+        return this;
     }
     public String getTitle(){
         return getTextFromElement(resultUbisoft);
     }
-    public void clickUbisoft(){
+    public SearchPage clickUbisoft(){
         click(ubisoft);
+        return this;
     }
-    public void clickUbisoftHistory(){
+    public SearchPage clickUbisoftHistory(){
         click(ubisoftHistory);
+        return this;
     }
     public String getTitleOfUbisoftHistory(){
         return getTextFromElement(ubisoftHistoryTitle);
